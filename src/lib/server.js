@@ -3,7 +3,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import logger from './logger';
-import noteRoutes from '../route/note-router';
+import authRoutes from '../route/auth-router';
+import profileRoutes from '../route/profile-route';
 import loggerMiddleware from './logger-middleware';
 import errorMiddleware from './error-middleware';
 
@@ -14,9 +15,10 @@ let server = null;
 // so it's important that our 404 catch-all is the last one
 // (1) link in the chain
 app.use(loggerMiddleware); // Vinicio - using an app level middleware
+app.use(authRoutes);
+app.use(profileRoutes);
 //---------------------------------------------------------------------------------
 // (2) link in the chain
-app.use(noteRoutes);
 // Vinicio - manking sure I return a 404 status if I don't have a matching route
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'Returning a 404 from the catch-all/default route');

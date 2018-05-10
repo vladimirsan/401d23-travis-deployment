@@ -31,6 +31,8 @@ export default (error, request, response, next) => { // eslint-disable-line no-u
     logger.log(logger.INFO, 'Responding with a 401 code');
     return response.sendStatus(401);
   }
+  //----------------------------------------------------------------
+  // TODO: Code extra jsonWebToken Validation
   //-----------------------------------------------------------------
   logger.log(logger.ERROR, 'Responding with a 500 error code');
   logger.log(logger.ERROR, error);
