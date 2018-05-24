@@ -1,5 +1,8 @@
-'use strict';
+import React from 'react';
+import ReactDom from 'react-dom';
+import App from './component/app/app';
+import './style/main.scss';
 
-import { startServer } from './lib/server';
-
-startServer();
+const container = document.createElement('div');
+document.body.appendChild(container);
+ReactDom.render(<App />,container);
